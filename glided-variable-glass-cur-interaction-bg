@@ -1,0 +1,19 @@
+Create a full-screen, responsive architectural fluted frosted glass (reeded glass) background component in React + Tailwind CSS with the following exact visual and technical specifications:
+
+1. Visual Aesthetic & Geometry (Nothing OS / Monochromatic Architectural Fluted Glass):
+   - Vertical parallel cylindrical convex glass slats (rib width: ~96px, angle: 0deg / vertical).
+   - Razor-sharp specular white catch-light rim pinned along the far left edge of each slat (sharp falloff from rgba(255, 255, 255, 0.72) at 0px down to transparent within 5px).
+   - Tactile frosted satin body: Smooth ambient gradient rolling from illuminated mid-grey (left) into dark charcoal.
+   - Deep, pitch-black shadow groove: The right ~35-40% of each slat drops into a deep, physical black valley shadow (rgba(0, 0, 0, 0.98) to rgba(0, 0, 0, 1.0)), reinforced by a multiply-blend razor crease at the seam between panes.
+   - Frosted film grain: Overlay an SVG micro-noise texture (fractalNoise, baseFrequency ~0.85, opacity ~0.35, mix-blend-overlay) across the panels to give the glass real physical frosted texture.
+   - Monochromatic palette only: Strictly neutral silver, charcoal, and black tones (no violet, neon, or saturated colors).
+
+2. Underlying Ambient & Cursor Light:
+   - Positioned underneath the fluted glass is a soft, diffuse ambient light layer (neutral slate/zinc colors: #71717a, #e4e4e7, #27272a).
+   - Pointer-reactive specular illumination: A subtle radial light (~480px-540px radius) follows the cursor via requestAnimationFrame with smooth interpolation (~0.08 smoothing factor).
+   - Use CSS mask-image on the cursor highlight layer repeating the slat pattern so the light specularly catches the left glass rims and front face, while staying masked out of the dark shadow valleys.
+
+3. React Component Architecture:
+   - Provide clean, configurable default props (angle = 0, ribWidth = 96, frostedBlur = 24, ambientLighting = 0.85, cursorGlow = 0.5).
+   - All glass layers must have `pointer-events-none` and `aria-hidden="true"` so they never intercept clicks, hovers, or form inputs.
+   - Ensure hardware acceleration (`backdropFilter`, CSS custom properties for mouse tracking `--mouse-x`, `--mouse-y`) and clean up all event listeners and animation frames on unmount.
